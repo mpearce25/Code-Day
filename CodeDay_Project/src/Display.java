@@ -11,6 +11,11 @@ public class Display {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setUndecorated(true);
 		frame.setVisible(true);
+		
+		JPanel map = new JPanel();
+		JPanel stats = new JPanel();
+		
+		
 	}
 
 
