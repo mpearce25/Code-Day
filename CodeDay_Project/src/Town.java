@@ -2,7 +2,7 @@ import java.util.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class Town extends Display {
+public class Town{
 	//Yay variables
 	int x;
 	int y;
