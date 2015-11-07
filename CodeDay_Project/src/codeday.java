@@ -1,3 +1,6 @@
+import java.util.*;
+import java.applet.*;
+import java.awt.*;
 
 public class codeday {
  //fhdfhgfh
