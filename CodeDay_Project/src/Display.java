@@ -14,7 +14,9 @@ public class Display {
 		
 		JPanel map = new JPanel();
 		JPanel stats = new JPanel();
-		
+		JScrollPane scrollPane = new JScrollPane();
+		JTextArea console = new JTextArea;
+		scrollPane.add();
 		
 	}
 
