@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class Town {
+	//Yay variables
 	int x;
 	int y;
 	int gunStore;
@@ -13,6 +14,7 @@ public class Town {
 	int questAge;
 	String questString;
 	String loc;
+	//Constructor
 	public Town(String nm, int xcoord, int ycoord, int gun, int gp, int hat, int hp, int qa, String qs) {
 		x = xcoord;
 		y = ycoord;
@@ -23,24 +25,31 @@ public class Town {
 		name = nm;
 		questAge = qa;
 		questString = qs;
-		String loc = "center";
+		loc = "center";
 	}
+	//When enters the town, location is center.
 	public void enter() {
+		if (questAge-1==Hero.getAge()) {
+			Display.output("You have completed your quest. Go to the Saloon to find out what to do next.");
+			Hero.setAge(Hero.getAge()+1);
+		}
 		Display.output("You enter the town of "+name+".");
 		Display.output("You can enter Saloon(A), enter the store(S), or exit(E).");
-		String loc = "center";
+		loc = "center";
 	}
+	//When you enter the saloon.
 	public void saloon() {
-		String loc = "saloon";
+		loc = "saloon";
 		if(Hero.getAge() == questAge) {
 			Display.output(questString);
 		} else {
-			Display.output("You see some people roaming about. You sit down at a table by yourself and have a drink.");
+			Display.output("You see some people roaming about. You sit down at a table by yourself.");
 		}
 		Display.output("You can buy Whiskey(B) or exit(E).");
 	}
+	//When you enter the store.
 	public void store() {
-		String loc = "store";
+		loc = "store";
 		if(Hero.getGunAttack() < gunStore) {
 			Display.output("You can get a new gun with an attack of "+gunStore+" for $"+gunPrice);
 		}
@@ -57,6 +66,7 @@ public class Town {
 			Display.output("There is nothing you can buy. You can exit(E).");
 		}
 	}
+	//When you try to buy a hat or gun.
 	public void buyStuff(Boolean gh) {
 		if(gh) {
 			if(gunPrice >= Hero.getMoney()) {
@@ -81,5 +91,57 @@ public class Town {
 				Display.output("You do not have enough money for this item.");
 			}
 		}
+		store();
+	}
+	//For buying whiskey.
+	public void buyWhiskey() {
+		if(Hero.getMoney()>5) {
+			Display.output("You bought 1 whiskey.");
+			Hero.setMoney(Hero.getMoney()-5);
+			Hero.setWhiskey(Hero.getWhiskey()+1);
+		} else {
+			Display.output("You do not have enough money for whiskey.");
+		}
+		saloon();
+	}
+	//You pressed a key, so this is happening.
+	public void keyPressed(KeyEvent e) {
+		switch (e.getKeyCode()) {
+			case (KeyEvent.VK_H): {
+				if(loc.equals("store")) {
+					buyStuff(false);
+				}
+			}
+			case (KeyEvent.VK_G): {
+				if(loc.equals("store")) {
+					buyStuff(true);
+				}
+			}
+			case (KeyEvent.VK_S): {
+				if(loc.equals("center")) {
+					store();
+				}
+			}
+			case (KeyEvent.VK_A): {
+				if(loc.equals("center")) {
+					saloon();
+				}
+			}
+			case (KeyEvent.VK_B): {
+				if(loc.equals("saloon")) {
+					buyWhiskey();
+				}
+			}
+			case (KeyEvent.VK_E): {
+				if(loc.equals("saloon")) {
+					enter();
+				} else if (loc.equals("store")) {
+					enter();
+				} else {
+					Hero.setX(x-1);
+					Hero.setY(y);
+				}
+			}
+		}	
 	}
 }
