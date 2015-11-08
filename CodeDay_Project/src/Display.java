@@ -21,6 +21,7 @@ public class Display {
 	private static JLabel map;
 	private static JScrollPane scrollPane;
 	private static JTextArea console;
+	private static JTextArea playerStats;
 	
 	public static String dispString = "";
 	public static int lines = 0;
@@ -41,7 +42,7 @@ public class Display {
 		
 		frame = new JFrame();
 		// intiating the frame
-		frame.setTitle("Game");
+		frame.setTitle("Bitter Bandits");
 		frame.setLayout(null);
 		frame.setLocation(0,0);
 		frame.setSize(1080,750);
@@ -93,13 +94,13 @@ public class Display {
 		/// drawing images
 		drawImage("Map_Background.png", 10,185,700,525);
 		
-
+		// Hat
+		drawImage("Hat1.png", 900,330,30,17);
 		// Gun
 		drawImage("Gun1.png", 890,380,30,17);
 		// Cowboy
 		drawImage("Cowboy.png", 720,300,350,300);
-		// Hat
-		drawImage("Hat1.png", 860,280,30,17);
+
 		//
 		
 		//stats
@@ -111,13 +112,22 @@ public class Display {
 		stats.setSize(350,600);
 		stats.setBorder(BorderFactory.createLineBorder(Color.black));
 		
+		playerStats = new JTextArea("");
+		playerStats.setSize(350,250);
+		playerStats.setFocusable(true);
+		playerStats.setLayout(null);
+		playerStats.setLineWrap(true);
+		playerStats.setEditable(false);
+		
+		stats.add(playerStats);
+		
 		// console
 		// console, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER
 		
-		console = new JTextArea("Console start");
+		console = new JTextArea("");
+		console.setEditable(false);
 		console.setFocusable(true);
 		console.setLayout(null);
-		console.setText("hi");
 		console.setLineWrap(true);
 		
 		scrollPane = new JScrollPane();
@@ -167,7 +177,9 @@ public class Display {
 		
 		exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.print("OK");
+				
+				frame.dispose();
+				System.exit(0);
 			}
 
 		});
@@ -184,22 +196,7 @@ public class Display {
 			}
 		});
 		
-		
-		output("Hello");
-		output("abasdgrg");
-		output("abasdgrg");
-		output("abasdgrg");
-		output("abasdgrg");
-		output("abasdgrg");
-		output("abasdgrg");
-		output("abasdgrg");
-		output("sedfrghfrgh");
-		output("sedfrghfrgh");
-		output("sedfrghfrgh");
-		output("sedfrghfrgh");
-		output("sedfrghfrgh");
-		output("sedfrghfrgh");
-		output("sedfrghfrgh");
+		updateStats();
 		
 	}
 
@@ -240,9 +237,18 @@ public class Display {
 		
 	}
 	
-	public static void updateStats(String move) {
+	public static void updateStats() {
 		
+		int age = Hero.getAge();
+		int curHealth = Hero.getCurrentHealth();
+		int maxHealth = Hero.getMaxHealth();
+		int attack = Hero.getAttack();
+		int style = Hero.getStyle();
+		int money = Hero.getMoney();
+		int whiskey = Hero.getWhiskey();
 		
+		String stat = String.format("Age: %2d%nHealth: %3d / %-3d%nAttack: %3d%nStyle: %2d%nMoney: $%5d%nWhiskey: %2d", age, curHealth, maxHealth, attack, style, money, whiskey);
+		playerStats.setText(stat);
 		
 	}
 	
