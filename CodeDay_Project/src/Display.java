@@ -22,6 +22,9 @@ public class Display {
 	private static JScrollPane scrollPane;
 	private static JTextArea console;
 	
+	public static String dispString = "";
+	public static int lines = 0;
+	
 	//button pannels
 	//private static JPanel buttonsPanel
 	//button
@@ -33,6 +36,9 @@ public class Display {
 	
 	public static void main(String[] args) {
 		
+
+		
+		
 		frame = new JFrame();
 		// intiating the frame
 		frame.setTitle("Game");
@@ -42,6 +48,14 @@ public class Display {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		
+		//initialing character dot
+				CircleComponent component = new CircleComponent(20);
+		        component.setLocation(20,220);
+		        component.setSize(component.getPreferredSize());
+		        
+		        frame.add(component);
+		        frame.repaint();
+		 ///////////
 		
 		// Live Here
 		drawImage("Home.png", 31,207,21,21);
@@ -79,6 +93,13 @@ public class Display {
 		/// drawing images
 		drawImage("Map_Background.png", 10,185,700,525);
 		
+
+		// Gun
+		drawImage("Gun1.png", 890,380,30,17);
+		// Cowboy
+		drawImage("Cowboy.png", 720,300,350,300);
+		// Hat
+		drawImage("Hat1.png", 860,280,30,17);
 		//
 		
 		//stats
@@ -90,32 +111,28 @@ public class Display {
 		stats.setSize(350,600);
 		stats.setBorder(BorderFactory.createLineBorder(Color.black));
 		
-		//console
-		scrollPane = new JScrollPane();
-		frame.add(scrollPane);
-		scrollPane.setLayout(null);
+		// console
+		// console, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER
 		
 		console = new JTextArea("Console start");
-		scrollPane.add(console);
-		
-		scrollPane.setSize(700, 165);
-		scrollPane.setLocation(10, 10);
-		Rectangle rect = new Rectangle(10,165);
-		scrollPane.scrollRectToVisible(rect);
-		scrollPane.addMouseWheelListener(new MouseAdapter() {
-			public void MouseWheelMoved(MouseWheelEvent e) {
-				System.out.print(e.getScrollType());
-			}
-
-		});
-		
-		console.setSize(700, 165);
-
-		console.setEditable(false);
-		console.setLineWrap(true);
-		console.setColumns(1);
 		console.setFocusable(true);
 		console.setLayout(null);
+		console.setText("hi");
+		console.setLineWrap(true);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setSize(700,165);
+		scrollPane.setLocation(10, 10);
+		scrollPane.setVisible(true);
+		scrollPane.setLayout(null);
+		
+		//frame.add(console);
+		//console.add(scrollPane)
+		scrollPane.add(console);
+		frame.add(scrollPane);
+ 
+		console.setSize(700, 165);
+		
 		//console.setRows( );
 
 		//exit button
@@ -167,7 +184,23 @@ public class Display {
 			}
 		});
 		
-		output("Hey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey man");
+		
+		output("Hello");
+		output("abasdgrg");
+		output("abasdgrg");
+		output("abasdgrg");
+		output("abasdgrg");
+		output("abasdgrg");
+		output("abasdgrg");
+		output("abasdgrg");
+		output("sedfrghfrgh");
+		output("sedfrghfrgh");
+		output("sedfrghfrgh");
+		output("sedfrghfrgh");
+		output("sedfrghfrgh");
+		output("sedfrghfrgh");
+		output("sedfrghfrgh");
+		
 	}
 
 	
@@ -189,9 +222,15 @@ public class Display {
 	}
 
 	public static void output(String s) {
-		
-		console.append(s);
-		console.updateUI();
+		dispString += s+ "%n";
+		if(lines<10) {
+			lines++;
+		} else {
+			int loc = dispString.indexOf("%n");
+			dispString = dispString.substring(loc+2);
+		}
+		console.setText(String.format(dispString));
+
 		
 	}
 	
@@ -243,5 +282,10 @@ public class Display {
 		} else if (hideout) {
 			Hideout.keyPressed(e);
 		}
+	}
+	
+	public static void initCharacter(){
+		
+		 
 	}
 }
