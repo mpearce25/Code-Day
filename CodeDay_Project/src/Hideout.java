@@ -1,3 +1,4 @@
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -12,12 +13,14 @@ public class Hideout implements KeyListener {
 	Hero h;
 	Display d;
 	String reason;
+	Image image;
 	public Enemy[] enemies = new Enemy[number_bandits];
 	//enemies =  new Enemy[10];
-	public Hideout(double x, double y, int number_bandits){
+	public Hideout(double x, double y, int number_bandits, Hero h, Display d, Image image){
 		this.x = x;
 		this.y = y;
 		this.number_bandits = number_bandits;
+		this.image = image;
 	}
 	
 	//miss when you shoot sometimes
@@ -52,6 +55,10 @@ public class Hideout implements KeyListener {
 		
 	}
 	public void battle(){
+		if(enemies.length == 1){
+			//Mega Boss mode
+			enemies[0] = new Enemy(65,10,2000,"");
+		}
 	for(int i = 0; i<enemies.length;i++){
 		enemies[i] = new Enemy(i*5 + 20,i*5,i*5 + 20,"Bandit");
 		System.out.println("Hi");
@@ -87,6 +94,10 @@ public class Hideout implements KeyListener {
 			reason = "You were killed by the Bandit";
 		}
 		d.output(reason);
+	}
+	if(h.getCurrentHealth()> 0){
+		h.setAge(h.getAge()+1);
+		d.output("Congratulations, You beat the bandits!  Move on to the next Quest!");
 	}
 }
 }
