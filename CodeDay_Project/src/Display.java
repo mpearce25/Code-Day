@@ -224,6 +224,16 @@ public class Display {
 		
 		
 	}
+	public static Point getLocation(){
+		int moo_x = Hero.getX();
+		int moo_y = Hero.getY();
+		
+		Point location = new Point(moo_x * 7, moo_y * 7);
+		
+		
+		return location;
+	}
+	
 
 	public void keyPressed(KeyEvent e) {
 		if(hero) {
