@@ -131,7 +131,7 @@ public class Display {
 	}
 	
 	public static void move(String move) {    // player move
-		
+		 
 		
 		
 	}
