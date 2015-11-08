@@ -27,6 +27,20 @@ public class Display {
 	
 	public static void main(String[] args) {
 		
+		KeyListener keyListeners = new KeyListener() {
+            public void keyPressed(KeyEvent e) {
+                System.out.println("tester");
+            }
+
+            public void keyReleased(KeyEvent e) {
+                System.out.println("2test2");
+            }
+
+            public void keyTyped(KeyEvent e) {
+                System.out.println("3test3");
+            }
+        };
+        
 		frame = new JFrame();
 		// intiating the frame
 		frame.setTitle("Game");
@@ -34,11 +48,13 @@ public class Display {
 		frame.setLocation(0,0);
 		frame.setSize(1080,750);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.addKeyListener(keyListeners);
 		frame.setVisible(true);
 		
 		///map
 		map = new JPanel();
 		map.setLayout(null);
+		map.addKeyListener(keyListeners);
 		frame.add(map);
 		
 		map.setLocation(10, 185);
@@ -49,6 +65,7 @@ public class Display {
 		stats = new JPanel();
 		frame.add(stats);
 		stats.setLayout(null);
+		stats.addKeyListener(keyListeners);
 		
 		stats.setLocation(720, 10);
 		stats.setSize(350,600);
@@ -59,6 +76,7 @@ public class Display {
 		scrollPane = new JScrollPane();
 		frame.add(scrollPane);
 		scrollPane.setLayout(null);
+		scrollPane.addKeyListener(keyListeners);
 		
 		console = new JTextArea("Console start");
 		scrollPane.add(console);
@@ -73,10 +91,12 @@ public class Display {
 		console.setColumns(1);
 		console.setFocusable(true);
 		console.setLayout(null);
+		console.addKeyListener(keyListeners);
 		//console.setRows( );
 
 		//exit button
 		exit = new JButton();
+		exit.addKeyListener(keyListeners);
 		frame.add(exit);
 		
 		exit.setVisible(true);
@@ -87,6 +107,7 @@ public class Display {
 		
 		//save button
 		save = new JButton();
+		save.addKeyListener(keyListeners);
 		frame.add(save);
 		
 		save.setVisible(true);
@@ -98,6 +119,7 @@ public class Display {
 		//load button
 		load = new JButton();
 		frame.add(load);
+		load.addKeyListener(keyListeners);
 		
 		load.setVisible(true);
 		load.setLocation(960, 620);
