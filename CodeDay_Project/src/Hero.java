@@ -138,6 +138,7 @@ public class Hero {
 	}
 	public static void setAge(int a) {
 		age = a;
+		Display.output("You are now "+age+". A year older and a year wiser.");
 	}
 	public static int getCurrentHealth() {
 		return currentHealth;
@@ -187,8 +188,57 @@ public class Hero {
 	public static void setIntro(int a) {
 		intro = a;
 	}
-	
+	public static void atHome() {
+		if(age!=29) {
+			Display.output("What are you doing here? I thought you were getting revenge. Get back out there!");
+		} else {
+			Display.output("Your mom stands at the door, a tear in her eye.");
+			Display.output("You nod at her, telling her you finished off the bandits.");
+			Display.output("She reaches forward and embraces you, a warm welcome after a hard journey.");
+			Display.output("\"Rest now\" she says and you close your eyes.");
+		}
+	}
 	
 	//Move around the map. Yay.
-	
+	public static void move(String s) {
+		if(s.equals("up")&& getY()!=0) {
+			setY(getY()-1);
+			Display.move("up");
+		}
+		if(s.equals("down") && getY() != 74) {
+			setY(getY()+1);
+			Display.move("down");
+		}
+		if(s.equals("right") && getX() !=99) {
+			setX(getX()+1);
+			Display.move("right");
+		}
+		if(s.equals("left") && getX() != 0) {
+			setX(getX()-1);
+			Display.move("left");
+		}
+		if((getX()==3 || getX()==4 || getX()==5)&&(getY()==3||getY()==4||getY()==5)) {
+			atHome();
+		} else if ((getX()==19 || getX()==20 || getX()==21)&&(getY()==20||getY()==21||getY()==22)) {
+			Display.satbury.enter();
+		} else if ((getX()==18 || getX()==19 || getX()==20)&&(getY()==63||getY()==64||getY()==65)) {
+			Display.clacton.enter();
+		} else if ((getX()==50 || getX()==51 || getX()==52)&&(getY()==30||getY()==31||getY()==32)) {
+			Display.kelna.enter();
+		} else if ((getX()==87 || getX()==88 || getX()==89)&&(getY()==25||getY()==26||getY()==27)) {
+			Display.lockinge.enter();
+		} else if ((getX()==78 || getX()==78 || getX()==79)&&(getY()==56||getY()==57||getY()==58)) {
+			Display.bredon.enter();
+		} else if ((getX()==37 || getX()==38 || getX()==39)&&(getY()==20||getY()==21||getY()==22)) {
+			Display.ho1.battle();
+		} else if ((getX()==31 || getX()==32 || getX()==33)&&(getY()==42||getY()==43||getY()==44)) {
+			Display.ho2.battle();
+		} else if ((getX()==72 || getX()==73 || getX()==74)&&(getY()==26||getY()==27||getY()==28)) {
+			Display.ho3.battle();
+		} else if ((getX()==82 || getX()==83 || getX()==84)&&(getY()==45||getY()==45||getY()==47)) {
+			Display.ho4.battle();
+		} else if ((getX()==95 || getX()==96 || getX()==97)&&(getY()==70||getY()==71||getY()==72)) {
+			Display.ho5.battle();
+		}
+	}
 }
