@@ -1,3 +1,4 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
@@ -5,6 +6,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class Display {
 	
@@ -14,9 +18,12 @@ public class Display {
 	
 	private static JFrame frame;
 	private static JPanel stats;
-	private static JPanel map;
+	private static JLabel map;
 	private static JScrollPane scrollPane;
 	private static JTextArea console;
+	
+	public static String dispString = "";
+	public static int lines = 0;
 	
 	//button pannels
 	//private static JPanel buttonsPanel
@@ -25,7 +32,12 @@ public class Display {
 	private static JButton save;
 	private static JButton load;
 	
+	private static BufferedImage bufferedImage;
+	
 	public static void main(String[] args) {
+		
+
+		
 		
 		frame = new JFrame();
 		// intiating the frame
@@ -36,15 +48,60 @@ public class Display {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		
-		///map
-		map = new JPanel();
-		map.setLayout(null);
-		frame.add(map);
+		//initialing character dot
+				CircleComponent component = new CircleComponent(20);
+		        component.setLocation(20,220);
+		        component.setSize(component.getPreferredSize());
+		        
+		        frame.add(component);
+		        frame.repaint();
+		 ///////////
 		
-		map.setLocation(10, 185);
-		map.setSize(700, 525);
-		map.setBorder(BorderFactory.createLineBorder(Color.black));
+		// Live Here
+		drawImage("Home.png", 31,207,21,21);
+		
+		// Ranch
+		drawImage("Town.png", 143,325,21,21);
+		
+		// town 2
+		drawImage("Town.png", 136,626,21,21);
+		
+		// town 3
+		drawImage("Town.png", 360,395,21,21);
+		
+		// town 4
+		drawImage("Town.png", 619,360,21,21);
+		
+		// town 5
+		drawImage("Town.png", 556,577,21,21);
+		
+		// Hideout 1
+		drawImage("Rock.png", 269,332,21,21);
+		
+		// Hideout 2
+		drawImage("Rock.png", 262,479,21,21);
+		
+		// Hideout 3
+		drawImage("Rock.png", 514,367,21,21);
+		
+		// Hideout 4
+		drawImage("Rock.png", 584,500,21,21);
+		
+		// MEGA BOSS
+		drawImage("Rock.png", 651,655,21,21);
+		
+		/// drawing images
+		drawImage("Map_Background.png", 10,185,700,525);
+		
 
+		// Gun
+		drawImage("Gun1.png", 890,380,30,17);
+		// Cowboy
+		drawImage("Cowboy.png", 720,300,350,300);
+		// Hat
+		drawImage("Hat1.png", 860,280,30,17);
+		//
+		
 		//stats
 		stats = new JPanel();
 		frame.add(stats);
@@ -54,25 +111,28 @@ public class Display {
 		stats.setSize(350,600);
 		stats.setBorder(BorderFactory.createLineBorder(Color.black));
 		
-		
-		//console
-		scrollPane = new JScrollPane();
-		frame.add(scrollPane);
-		scrollPane.setLayout(null);
+		// console
+		// console, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER
 		
 		console = new JTextArea("Console start");
-		scrollPane.add(console);
-		
-		scrollPane.setSize(700, 165);
-		scrollPane.setLocation(10, 10);
-		
-		console.setSize(700, 165);
-
-		console.setEditable(false);
-		console.setLineWrap(true);
-		console.setColumns(1);
 		console.setFocusable(true);
 		console.setLayout(null);
+		console.setText("hi");
+		console.setLineWrap(true);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setSize(700,165);
+		scrollPane.setLocation(10, 10);
+		scrollPane.setVisible(true);
+		scrollPane.setLayout(null);
+		
+		//frame.add(console);
+		//console.add(scrollPane)
+		scrollPane.add(console);
+		frame.add(scrollPane);
+ 
+		console.setSize(700, 165);
+		
 		//console.setRows( );
 
 		//exit button
@@ -124,19 +184,58 @@ public class Display {
 			}
 		});
 		
-		output("Hey man");
+		
+		output("Hello");
+		output("abasdgrg");
+		output("abasdgrg");
+		output("abasdgrg");
+		output("abasdgrg");
+		output("abasdgrg");
+		output("abasdgrg");
+		output("abasdgrg");
+		output("sedfrghfrgh");
+		output("sedfrghfrgh");
+		output("sedfrghfrgh");
+		output("sedfrghfrgh");
+		output("sedfrghfrgh");
+		output("sedfrghfrgh");
+		output("sedfrghfrgh");
+		
 	}
 
+	
+	public static void drawImage(String imagePath, int location_x, int location_y, int size_x, int size_y ){
+		try {
+			bufferedImage = ImageIO.read(new File(imagePath));
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
+		JLabel image = new JLabel(new ImageIcon(bufferedImage));
+		//image.setLayout(null);
+		frame.add(image);
+		
+		image.setLocation(location_x, location_y);
+		image.setSize(size_x, size_y);
+		//image.setBorder(BorderFactory.createLineBorder(Color.black));
+
+	}
 
 	public static void output(String s) {
-		
-		console.append(s);
-		console.updateUI();
+		dispString += s+ "%n";
+		if(lines<10) {
+			lines++;
+		} else {
+			int loc = dispString.indexOf("%n");
+			dispString = dispString.substring(loc+2);
+		}
+		console.setText(String.format(dispString));
+
 		
 	}
 	
 	public static void move(String move) {    // player move
-		 
+		
 		
 		
 	}
@@ -164,6 +263,16 @@ public class Display {
 		
 		
 	}
+	public static Point getLocation(){
+		int moo_x = Hero.getX();
+		int moo_y = Hero.getY();
+		
+		Point location = new Point(moo_x * 7, moo_y * 7);
+		
+		
+		return location;
+	}
+	
 
 	public void keyPressed(KeyEvent e) {
 		if(hero) {
@@ -173,5 +282,10 @@ public class Display {
 		} else if (hideout) {
 			Hideout.keyPressed(e);
 		}
+	}
+	
+	public static void initCharacter(){
+		
+		 
 	}
 }
