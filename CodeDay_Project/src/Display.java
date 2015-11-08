@@ -3,10 +3,11 @@ import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
 import java.awt.*;
 import java.awt.event.*;
 
-public class Display {
+public class Display{
 	
 	private static boolean hero = false;
 	private static boolean town = false;
@@ -37,6 +38,12 @@ public class Display {
 	private static JButton load;
 	
 	public static void main(String[] args) {
+		/////
+		//KeyListener listener = new MyKeyListener();
+		//addKeyListener(listener);
+		/////
+		
+		//initListeners(); //Keyboard shit
 		
 		frame = new JFrame();
 		// intiating the frame
@@ -189,14 +196,9 @@ public class Display {
 		
 		
 	}
+	
 
-	public void keyPressed(KeyEvent e) {
-		if(hero) {
-			Hero.keyPressed(e);
-		} else if (town) {
-			Town.keyPressed(e);
-		} else if (hideout) {
-			Hideout.keyPressed(e);
-		}
-	}
+	
+	
+	
 }

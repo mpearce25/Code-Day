@@ -138,6 +138,7 @@ public class Hero {
 	}
 	public static void setAge(int a) {
 		age = a;
+		Display.output("You are now "+age+". A year older and a year wiser.");
 	}
 	public static int getCurrentHealth() {
 		return currentHealth;
@@ -188,7 +189,14 @@ public class Hero {
 		intro = a;
 	}
 	public static void atHome() {
-		
+		if(age!=29) {
+			Display.output("What are you doing here? I thought you were getting revenge. Get back out there!");
+		} else {
+			Display.output("Your mom stands at the door, a tear in her eye.");
+			Display.output("You nod at her, telling her you finished off the bandits.");
+			Display.output("She reaches forward and embraces you, a warm welcome after a hard journey.");
+			Display.output("\"Rest now\" she says and you close your eyes.");
+		}
 	}
 	
 	//Move around the map. Yay.

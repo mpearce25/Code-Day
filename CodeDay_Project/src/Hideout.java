@@ -68,14 +68,12 @@ public class Hideout{
 		System.out.println("Hi");
 		while(enemies[i].health > 0 && Hero.getCurrentHealth() > 0){
 			if(fighting == true){
-				if(enemies[i].attack * Math.random()>Hero.getAttack()*Math.random()){
-					Hero.setCurrentHealth((int) (Hero.getCurrentHealth()-enemies[i].attack));
-				}else if(enemies[i].attack * Math.random()<Hero.getAttack()*Math.random()){
-					enemies[i].health -= Hero.getAttack();
-				}else if(enemies[i].attack * Math.random() == Hero.getAttack()*Math.random()){
-					enemies[i].style += 10;
-					Hero.setStyle(10);
-				}
+				int heroRand = (int)(Math.floor(Math.random()*3.0))-1;
+				int enemyRand = (int)(Math.floor(Math.random()*3.0))-1;
+				enemies[i].health -= (Hero.getAttack()+heroRand);
+				Display.output("You attacked your enemy and dealt "+(Hero.getAttack()+heroRand)+" damage.");
+					Hero.setCurrentHealth((int) (Hero.getCurrentHealth()-enemies[i].attack+enemyRand));
+					Display.output("Your enemy has attacked you and dealt " +(enemies[i].attack+enemyRand)+" damage."); 
 			}else if(taunting == true){
 				if(enemies[i].style * Math.random() < Hero.getStyle()*Math.random()){
 					enemies[i].health = 0;
@@ -84,18 +82,19 @@ public class Hideout{
 					enemies[i].health+=5;
 				}
 			}else if(running == true){
-				if(Math.random() > .80){
+				if(Math.random() > .80 ){
 					enemies[i].health = 0;
 					reason = "You Succesfully Escaped the Bandit!";
 				}else{
 					enemies[i].health+=5;
+					Display.output("You couldn't get away and your enemy healed 5 health!");
 				}
 			}
 		}
 		if(enemies[i].health <= 0){
 			reason = "You Killed The Bandit!";
 		}else if(Hero.getCurrentHealth() <= 0){
-			reason = "You were killed by the Bandit";
+			reason = "You were killed by the Bandit.";
 		}
 		Display.output(reason);
 	}
