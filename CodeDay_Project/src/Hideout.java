@@ -10,6 +10,7 @@ public class Hideout implements KeyListener {
 	public boolean fighting;
 	public boolean running;
 	Hero h;
+	Display d;
 	String reason;
 	public Enemy[] enemies = new Enemy[number_bandits];
 	//enemies =  new Enemy[10];
@@ -85,7 +86,11 @@ public class Hideout implements KeyListener {
 		}else if(h.getCurrentHealth() <= 0){
 			reason = "You were killed by the Bandit";
 		}
-		Display.output(reason);
+		d.output(reason);
+	}
+	if(h.getCurrentHealth()> 0){
+		h.setAge(h.getAge()+1);
+		d.output("Congratulations, You beat the bandits!  Move on to the next Quest!");
 	}
 }
 }

@@ -88,6 +88,7 @@ public class Display {
 		exit.setBorder(compound);
 		
 		toolBar.add(exit);
+		toolBar.setVisible(true);
 		//test
 	}
 
