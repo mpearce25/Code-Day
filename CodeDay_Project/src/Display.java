@@ -1,4 +1,9 @@
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -10,6 +15,12 @@ public class Display {
 	private static JScrollPane scrollPane;
 	private static JTextArea console;
 	private static JToolBar toolBar;
+	
+	//button
+	private static JButton exit;
+	private static JButton save;
+	private static JButton load;
+	
 	
 	public static void main(String[] args) {
 		
@@ -63,8 +74,17 @@ public class Display {
 		toolBar.setFocusable(false);
 		toolBar.setBorder(BorderFactory.createLineBorder(Color.black));
 		
-		//toolbar buttons
+		//exit button
+		exit = new JButton();
 		
+		Border line = new LineBorder(new Color(160, 160, 160));
+		Border margin = new EmptyBorder(5, 15, 5, 15);
+		Border compound = new CompoundBorder(line, margin);
+
+		exit.setPreferredSize(new Dimension(116,90));
+		exit.setFocusable(false);
+		exit.setBackground(Color.WHITE);
+		exit.setBorder(compound);
 		
 	}
 
