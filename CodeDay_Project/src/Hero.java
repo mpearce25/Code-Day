@@ -1,83 +1,89 @@
+import java.util.ArrayList;
+
 public class Hero {
-	private int x;
-	private int y;
-	private int whiskey;
-	private int age;
-	private int maxHealth;
-	private int currentHealth;
-	private int money;
-	private int gunAttack;
-	private int attack;
-	private int hatStyle;
-	private int style;
+	private static int x;
+	private static int y;
+	private static int whiskey;
+	private static int age;
+	private static int maxHealth;
+	private static int currentHealth;
+	private static int money;
+	private static int gunAttack;
+	private static int attack;
+	private static int hatStyle;
+	private static int style;
+	 
 	
-	
+	public void init() {
+		
+		
+	}
 	
 	//Annoying methods because we have to
-	public int getX() {
+	public static int getX() {
 		return x;
 	}
-	public void setX(int a) {
+	public static void setX(int a) {
 		x = a;
 	}
-	public int getY() {
+	public static int getY() {
 		return y;
 	}
-	public void setY(int a) {
+	public static void setY(int a) {
 		y = a;
 	}
-	public int getWhiskey() {
+	public static int getWhiskey() {
 		return whiskey;
 	}
-	public void setWhiskey(int a) {
+	public static void setWhiskey(int a) {
 		whiskey = a;
 	}
-	public int getAge() {
+	public static int getAge() {
 		return age;
 	}
-	public void setAge(int a) {
+	public static void setAge(int a) {
 		age = a;
 	}
-	public int getCurrentHealth() {
+	public static int getCurrentHealth() {
 		return currentHealth;
 	}
-	public void setCurrentHealth(int a) {
+	public static void setCurrentHealth(int a) {
 		currentHealth = a;
 	}
-	public int getMaxHealth() {
+	public static int getMaxHealth() {
 		return maxHealth;
 	}
-	public void setMaxHealth(int a) {
+	public static void setMaxHealth(int a) {
 		maxHealth = a;
 	}
-	public int getMoney() {
+	public static int getMoney() {
 		return money;
 	}
-	public void setMoney(int a) {
+	public static void setMoney(int a) {
 		money = a;
 	}
-	public int getGunAttack() {
+	public static int getGunAttack() {
 		return gunAttack;
 	}
-	public void setGunAttack(int a) {
+	public static void setGunAttack(int a) {
 		gunAttack = a;
 	}
-	public int getHatStyle() {
+	public static int getHatStyle() {
 		return hatStyle;
 	}
-	public void setHatStyle(int a) {
+	public static void setHatStyle(int a) {
 		hatStyle = a;
 	}
-	public int getAttack() {
+	public static int getAttack() {
 		return attack;
 	}
-	public void setAttack(int a) {
+	public static void setAttack(int a) {
 		attack = a;
 	}
-	public int getStyle() {
+	public static int getStyle() {
 		return style;
 	}
-	public void setStyle(int a) {
+	public static void setStyle(int a) {
 		style = a;
 	}
 }
