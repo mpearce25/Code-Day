@@ -8,6 +8,10 @@ import java.awt.event.*;
 
 public class Display {
 	
+	private static boolean hero = false;
+	private static boolean town = false;
+	private static boolean hideout = false;
+	
 	private static JFrame frame;
 	private static JPanel stats;
 	private static JPanel map;
@@ -15,8 +19,6 @@ public class Display {
 	private static JTextArea console;
 	private static JToolBar toolBar;
 	
-	//button pannels
-	//private static JPanel buttonsPanel
 	//button
 	private static JButton exit;
 	private static JButton save;
@@ -63,49 +65,53 @@ public class Display {
 		
 		scrollPane.setSize(700, 165);
 		scrollPane.setLocation(10, 10);
-
 		console.setEditable(false);
-		console.setLineWrap(true);
-		console.setColumns(1);
-		console.setFocusable(true);
-		console.setLayout(null);
-		//console.setRows( );
-
 		
 
-		//exit button
 		exit = new JButton();
-		frame.add(exit);
-		
-		exit.setVisible(true);
-		exit.setLocation(720, 620);
-		exit.setText("exit");
-		exit.setFocusable(true);
-		exit.setSize(110,90);
-		
-		//save button
+		load = new JButton();
 		save = new JButton();
-		frame.add(save);
 		
-		save.setVisible(true);
-		save.setLocation(840, 620);
-		save.setText("save");
-		save.setFocusable(true);
-		save.setSize(110,90);
+		//toolBar charactristics
+		/*toolBar = new JToolBar();
+		frame.add(toolBar);
+		
+		toolBar.setLayout(null);
+		toolBar.setLocation(720,620);
+		toolBar.setSize(350, 90);
+		toolBar.setFloatable(false);
+		toolBar.setFocusable(false);
+		toolBar.setBorder(BorderFactory.createLineBorder(Color.black));
+		toolBar.setVisible(true);
+		
+		//exit button
+		//toolBar.addSeparator(new Dimension(6,0));
+		
+		//exit.setFocusable(false);
+		//exit.setBackground(Color.BLACK);
+		exit.setVisible(true);
+		exit.setText("exit");
+		exit.setSize(110,90);
+		exit.setLayout(null);
+		
+		
+		toolBar.add(exit);
 		
 		//load button
-		load = new JButton();
-		frame.add(load);
 		
+		
+		//load.setFocusable(false);
+		//load.setBackground(Color.BLACK);
 		load.setVisible(true);
-		load.setLocation(960, 620);
 		load.setText("load");
-		load.setFocusable(true);
 		load.setSize(110,90);
+		//load.setPreferredSize(new Dimension(110,90));
+		//load.setLabel();
+		load.setLayout(null);
 		
+		toolBar.add(load);
 		
-		
-	
+		*/
 		
 		exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -125,21 +131,18 @@ public class Display {
 				System.out.print("OK");
 			}
 		});
-		
-
-		
+		output("Hello world!");
 	}
 
 
 	public static void output(String s) {
 		
-		console.append(s);
-		console.updateUI();
+		console.setText(console.getText() + s);
 		
 	}
 	
 	public static void move(String move) {    // player move
-		 
+		
 		
 		
 	}
@@ -167,5 +170,13 @@ public class Display {
 		
 		
 	}
-
+	public void keyPressed(KeyEvent e) {
+		if(hero) {
+			Hero.keyPressed(e);
+		} else if (town) {
+			Town.keyPressed(e);
+		} else if (hideout) {
+			Hideout.keyPressed(e);
+		}
+	}
 }
