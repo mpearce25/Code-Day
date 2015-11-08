@@ -5,9 +5,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.
 
-public class Display extends ActiveListener {
+public class Display {
 	
 	private static JFrame frame;
 	private static JPanel stats;
@@ -124,6 +123,12 @@ public class Display extends ActiveListener {
 	}
 	
 	public static void newHat() {
+		
+		
+		
+	}
+	
+	public abstract class listener implements ActionListener { 
 		
 		
 		
