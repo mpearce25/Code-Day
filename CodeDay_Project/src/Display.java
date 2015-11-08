@@ -88,6 +88,7 @@ public class Display extends ActiveListener {
 		exit.setBackground(Color.WHITE);
 		exit.setBorder(compound);
 		
+		toolBar.add(exit);
 		//test
 	}
 
