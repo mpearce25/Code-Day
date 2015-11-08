@@ -18,6 +18,17 @@ public class Display {
 	private static JScrollPane scrollPane;
 	private static JTextArea console;
 	
+	public static Town satbury;
+	public static Town clacton;
+	public static Town kelna;
+	public static Town lockinge;
+	public static Town bredon;
+	public static Hideout ho1;
+	public static Hideout ho2;
+	public static Hideout ho3;
+	public static Hideout ho4;
+	public static Hideout ho5;
+	
 	//button pannels
 	//private static JPanel buttonsPanel
 	//button
@@ -123,7 +134,21 @@ public class Display {
 				System.out.print("OK");
 			}
 		});
+		hero = true;
 		
+		satbury = new Town("Satubury",19,20,10,15,10,15,20,"Why, I know. Those bandits have a hideout in the east.");
+		clacton = new Town("Clacton",18,63,15,30,15,20,22,"Those Bandits, they are northeast a bit aways.");
+		kelna = new Town("Kelna",50,30,20,75,20,75,24,"You are tracking those bandits? Thank God. They have a hideout to the east.");
+		lockinge = new Town("Lockinge",87,25,25,100,25,100,26,"Damn those bandits. They have a hideout to the south of here.");
+		bredon = new Town("Bredon",78,56,30,150,30,150,28,"You have to take out their leader to get rid of the bandits. Go to the southeast.");
+
+		ho1 = new Hideout(37,20,3,20,"You cannot defeat me. Someone in a town to the southwest might know where my brothern are.");
+		ho2 = new Hideout(31,42,3,22,"My allies are near. That brat in the town to the northeast better not rat out their location.");
+		ho3 = new Hideout(72,26,4,24,"Go east to the next town. Maybe someone there can stop you.");
+		ho4 = new Hideout(82,45,5,26,"My boss will destroy you. In the town to the southeast someone will let you to him.");
+		ho5 = new Hideout(95,70,1,28,"You have destoyed my entire life work. YOU....");
+
+		Hero.intro1();
 		output("Hey man");
 	}
 
