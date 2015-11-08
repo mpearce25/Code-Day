@@ -1,16 +1,13 @@
 import java.awt.Image;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
 
 public class Enemy{
 	//stats of the enemy
-	public double health;
-	public double attack;
-	public double style;
-	public String label;
-	public Image image;
-	public boolean lost;
+	public static double health;
+	public static double attack;
+	public static double style;
+	public static String label;
+	public static Image image;
+	public static boolean lost;
 	public Enemy(double health, double attack, double style,String label){
 		this.health = health;
 		this.attack = attack;
