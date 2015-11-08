@@ -63,6 +63,10 @@ public class Display {
 		scrollPane.setLocation(10, 10);
 		console.setEditable(false);
 		
+
+		exit = new JButton();
+		load = new JButton();
+		save = new JButton();
 		
 		//toolBar charactristics
 		/*toolBar = new JToolBar();
@@ -77,7 +81,6 @@ public class Display {
 		toolBar.setVisible(true);
 		
 		//exit button
-		exit = new JButton();
 		//toolBar.addSeparator(new Dimension(6,0));
 		
 		//exit.setFocusable(false);
@@ -91,7 +94,6 @@ public class Display {
 		toolBar.add(exit);
 		
 		//load button
-		load = new JButton();
 		
 		
 		//load.setFocusable(false);
@@ -105,9 +107,6 @@ public class Display {
 		
 		toolBar.add(load);
 		
-		
-		
-		save = new JButton();
 		*/
 		
 		exit.addActionListener(new ActionListener() {
