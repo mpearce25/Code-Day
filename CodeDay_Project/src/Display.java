@@ -74,22 +74,31 @@ public class Display {
 		toolBar.setBorder(BorderFactory.createLineBorder(Color.black));
 		
 		//exit button
-		exit = new JButton();
-		load = new JButton();
-		save = new JButton();
 		
-		Border line = new LineBorder(new Color(160, 160, 160));
-		Border margin = new EmptyBorder(5, 15, 5, 15);
-		Border compound = new CompoundBorder(line, margin);
+		exit = new JButton();
+		toolBar.add(exit);
+		
+		
+		//Border line = new LineBorder(new Color(160, 160, 160));
+		//Border margin = new EmptyBorder(5, 15, 5, 15);
+		//Border compound = new CompoundBorder(line, margin);
 
 		exit.setPreferredSize(new Dimension(116,90));
 		exit.setFocusable(false);
 		exit.setBackground(Color.WHITE);
-		exit.setBorder(compound);
+		//exit.setBorder(compound);
+		exit.setVisible(true);
+		exit.setText("exit");
+		exit.setSize(316,390);
+		//exit.setPreferredSize(new Dimension(200,300));
+	
 		
-		toolBar.add(exit);
+		
 		toolBar.setVisible(true);
-		//test
+		
+		
+		load = new JButton();
+		save = new JButton();
 	}
 
 
