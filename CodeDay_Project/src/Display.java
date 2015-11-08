@@ -130,7 +130,13 @@ public class Display {
 		
 	}
 
+	public void initMap(){
 
+		
+
+
+	}
+	
 	public static void output(String s) {
 		
 		console.append(s);
