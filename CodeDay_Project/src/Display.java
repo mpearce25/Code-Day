@@ -8,6 +8,10 @@ import java.awt.event.*;
 
 public class Display {
 	
+	private static boolean hero = false;
+	private static boolean town = false;
+	private static boolean hideout = false;
+	
 	private static JFrame frame;
 	private static JPanel stats;
 	private static JPanel map;
@@ -161,4 +165,13 @@ public class Display {
 		
 	}
 
+	public void keyPressed(KeyEvent e) {
+		if(hero) {
+			Hero.keyPressed(e);
+		} else if (town) {
+			Town.keyPressed(e);
+		} else if (hideout) {
+			Hideout.keyPressed(e);
+		}
+	}
 }

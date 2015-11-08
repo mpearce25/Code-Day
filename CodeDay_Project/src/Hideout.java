@@ -3,28 +3,28 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 
-public class Hideout implements KeyListener {
-	public double x;
-	public double y;
-	public int number_bandits;
-	public boolean taunting;
-	public boolean fighting;
-	public boolean running;
-	String reason;
-	Image image;
-	public Enemy[] enemies = new Enemy[number_bandits];
+public class Hideout{
+	public static double x;
+	public static double y;
+	public static int number_bandits;
+	public static boolean taunting;
+	public static boolean fighting;
+	public static boolean running;
+	static String reason;
+	static Image image;
+	public static Enemy[] enemies = new Enemy[number_bandits];
 	//enemies =  new Enemy[10];
-	public Hideout(double x, double y, int number_bandits, Image image){
-		this.x = x;
-		this.y = y;
-		this.number_bandits = number_bandits;
-		this.image = image;
+	public Hideout(double xcoord, double ycoord, int nb, Image img){
+		x = xcoord;
+		y = ycoord;
+		number_bandits = nb;
+		image = img;
 	}
 	
 	//miss when you shoot sometimes
 	//make the player know to move on to the next thing after the bandits are killed
 	//make the final boss
-	@Override
+	
 	public static void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		switch(e.getKeyCode()){
@@ -42,17 +42,17 @@ public class Hideout implements KeyListener {
 			break;
 		}
 	}
-	@Override
+	
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
+	
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
-	public void battle(){
+	public static void battle(){
 		if(enemies.length == 1){
 			//Mega Boss mode
 			enemies[0] = new Enemy(65,10,2000,"");

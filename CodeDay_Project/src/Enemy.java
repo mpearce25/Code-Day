@@ -2,16 +2,50 @@ import java.awt.Image;
 
 public class Enemy{
 	//stats of the enemy
-	public static double health;
-	public static double attack;
-	public static double style;
-	public static String label;
-	public static Image image;
-	public static boolean lost;
-	public Enemy(double health, double attack, double style,String label){
-		this.health = health;
-		this.attack = attack;
-		this.style = style;
-		this.label = label;
+
+	public double health;
+	public double attack;
+	public double style;
+	public String label;
+	public Image image;
+	public boolean lost;
+	public Enemy(double h, double at, double sty,String lbl){
+		health = h;
+		attack = at;
+		style = sty;
+		label = lbl;
+	}
+	public double getHealth() {
+		return health;
+	}
+	public double getAttack() {
+		return attack;
+	}
+	public double getStyle() {
+		return style;
+	}
+	public String getLabel() {
+		return label;
+	}
+	public Image getImage() {
+		return image;
+	}
+	public boolean getLost() {
+		return lost;
+	}
+	public void setHealth(double h) {
+		health = h; 
+	}
+	public void setAttack(double a) {
+		attack = a;
+	}
+	public void setStyle(double s) {
+		style = s;
+	}
+	public void setLabel(String l) {
+		label = l;
+	}
+	public void setLost(Boolean l) {
+		lost = l;
 	}
 }
