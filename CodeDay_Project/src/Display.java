@@ -6,14 +6,13 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Display {
+public class Display implements Runnable {
 	
 	private static JFrame frame;
 	private static JPanel stats;
 	private static JPanel map;
 	private static JScrollPane scrollPane;
 	private static JTextArea console;
-	private static JToolBar toolBar;
 	
 	//button pannels
 	//private static JPanel buttonsPanel
@@ -22,6 +21,7 @@ public class Display {
 	private static JButton save;
 	private static JButton load;
 	
+	static Thread thread = new Thread();
 	
 	public static void main(String[] args) {
 		
@@ -58,11 +58,13 @@ public class Display {
 		frame.add(scrollPane);
 		scrollPane.setLayout(null);
 		
-		console = new JTextArea();
+		console = new JTextArea("Console start");
 		scrollPane.add(console);
 		
 		scrollPane.setSize(700, 165);
 		scrollPane.setLocation(10, 10);
+		
+		console.setSize(700, 165);
 
 		console.setEditable(false);
 		console.setLineWrap(true);
@@ -103,10 +105,6 @@ public class Display {
 		load.setFocusable(true);
 		load.setSize(110,90);
 		
-		
-		
-	
-		
 		exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.print("OK");
@@ -126,8 +124,8 @@ public class Display {
 			}
 		});
 		
-
-		
+		output("Hey man");
+		thread.start();
 	}
 
 
@@ -166,6 +164,26 @@ public class Display {
 		
 		
 		
+	}
+	
+	public void go() {
+		
+		output("");
+		
+	}
+
+	public void run(){
+		while(true){
+			//System.out.println("hi");
+			go();
+			//repaint();
+			try {
+				thread.sleep(5);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 }
