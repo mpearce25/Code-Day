@@ -63,7 +63,7 @@ public class Display {
 		
 		scrollPane.setSize(700, 165);
 		scrollPane.setLocation(10, 10);
-		console.setEditable(false);
+		console.setEditable(true);
 		
 
 		//exit button
@@ -118,6 +118,8 @@ public class Display {
 				System.out.print("OK");
 			}
 		});
+		
+		output("hey");
 		
 	}
 
