@@ -70,7 +70,7 @@ public class Town{
 	public void buyStuff(Boolean gh) {
 		if(gh) {
 			if(gunPrice >= Hero.getMoney()) {
-				Hero.setMoney(Hero.geyMoney()-gunPrice);
+				Hero.setMoney(Hero.getMoney()-gunPrice);
 				Hero.setAttack(Hero.getAttack()-Hero.getGunAttack()+gunStore);
 				Hero.setGunAttack(gunStore);
 				Display.output("You bought a new gun.");
@@ -81,7 +81,7 @@ public class Town{
 			}
 		} else {
 			if(hatPrice >= Hero.getMoney()) {
-				Hero.setMoney(Hero.geyMoney()-hatPrice);
+				Hero.setMoney(Hero.getMoney()-hatPrice);
 				Hero.setStyle(Hero.getStyle()-Hero.getHatStyle()+hatStore);
 				Hero.setHatStyle(hatStore);
 				Display.output("You bought a new hat.");
