@@ -62,6 +62,11 @@ public class Display {
 		scrollPane.setSize(700, 165);
 		scrollPane.setLocation(10, 10);
 		console.setEditable(false);
+		console.setLineWrap(true);
+		console.setColumns(1);
+		console.setFocusable(true);
+		console.setLayout(null);
+		//console.setRows( );
 		
 
 		exit = new JButton();
@@ -128,12 +133,15 @@ public class Display {
 			}
 		});
 		
+		output("sup");
+		
 	}
 
 
 	public static void output(String s) {
 		
-		console.setText(console.getText() + s);
+		console.append(s);
+		console.updateUI();
 		
 	}
 	
