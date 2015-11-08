@@ -61,41 +61,79 @@ public class Display {
 		
 		scrollPane.setSize(700, 165);
 		scrollPane.setLocation(10, 10);
+		console.setEditable(false);
 		
+
+		exit = new JButton();
+		load = new JButton();
+		save = new JButton();
 		
-		//toolBar
-		toolBar = new JToolBar();
+		//toolBar charactristics
+		/*toolBar = new JToolBar();
 		frame.add(toolBar);
 		
+		toolBar.setLayout(null);
 		toolBar.setLocation(720,620);
 		toolBar.setSize(350, 90);
 		toolBar.setFloatable(false);
 		toolBar.setFocusable(false);
 		toolBar.setBorder(BorderFactory.createLineBorder(Color.black));
+		toolBar.setVisible(true);
 		
 		//exit button
-		exit = new JButton();
-		load = new JButton();
-		save = new JButton();
+		//toolBar.addSeparator(new Dimension(6,0));
 		
-		Border line = new LineBorder(new Color(160, 160, 160));
-		Border margin = new EmptyBorder(5, 15, 5, 15);
-		Border compound = new CompoundBorder(line, margin);
-
-		exit.setPreferredSize(new Dimension(116,90));
-		exit.setFocusable(false);
-		exit.setBackground(Color.WHITE);
-		exit.setBorder(compound);
+		//exit.setFocusable(false);
+		//exit.setBackground(Color.BLACK);
+		exit.setVisible(true);
+		exit.setText("exit");
+		exit.setSize(110,90);
+		exit.setLayout(null);
+		
 		
 		toolBar.add(exit);
-		toolBar.setVisible(true);
-		//test
+		
+		//load button
+		
+		
+		//load.setFocusable(false);
+		//load.setBackground(Color.BLACK);
+		load.setVisible(true);
+		load.setText("load");
+		load.setSize(110,90);
+		//load.setPreferredSize(new Dimension(110,90));
+		//load.setLabel();
+		load.setLayout(null);
+		
+		toolBar.add(load);
+		
+		*/
+		
+		exit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.print("OK");
+			}
+
+		});
+		
+		save.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.print("OK");
+			}
+		});
+		
+		load.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.print("OK");
+			}
+		});
+		
 	}
 
 
 	public static void output(String s) {
 		
-		
+		console.setText(console.getText() + s);
 		
 	}
 	
@@ -128,11 +166,5 @@ public class Display {
 		
 		
 	}
-	
-	public abstract class listener implements ActionListener { 
-		
-		
-		
-	}
-	
+
 }
