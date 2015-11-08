@@ -88,6 +88,10 @@ public class Hideout implements KeyListener {
 		}
 		d.output(reason);
 	}
+	if(h.getCurrentHealth()> 0){
+		h.setAge(h.getAge()+1);
+		d.output("Congratulations, You beat the bandits!  Move on to the next Quest!");
+	}
 }
 }
 
