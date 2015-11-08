@@ -63,48 +63,57 @@ public class Display {
 		scrollPane.setLocation(10, 10);
 		
 		
-		//toolBar
-		toolBar = new JToolBar();
+		
+		//toolBar charactristics
+		/*toolBar = new JToolBar();
 		frame.add(toolBar);
 		
+		toolBar.setLayout(null);
 		toolBar.setLocation(720,620);
 		toolBar.setSize(350, 90);
 		toolBar.setFloatable(false);
 		toolBar.setFocusable(false);
 		toolBar.setBorder(BorderFactory.createLineBorder(Color.black));
-		
-		//exit button
-		
-		exit = new JButton();
-		toolBar.add(exit);
-		
-		
-		//Border line = new LineBorder(new Color(160, 160, 160));
-		//Border margin = new EmptyBorder(5, 15, 5, 15);
-		//Border compound = new CompoundBorder(line, margin);
-
-		exit.setPreferredSize(new Dimension(116,90));
-		exit.setFocusable(false);
-		exit.setBackground(Color.WHITE);
-		//exit.setBorder(compound);
-		exit.setVisible(true);
-		exit.setText("exit");
-		exit.setSize(316,390);
-		//exit.setPreferredSize(new Dimension(200,300));
-	
-		
-		
 		toolBar.setVisible(true);
 		
+		//exit button
+		exit = new JButton();
+		//toolBar.addSeparator(new Dimension(6,0));
 		
+		//exit.setFocusable(false);
+		//exit.setBackground(Color.BLACK);
+		exit.setVisible(true);
+		exit.setText("exit");
+		exit.setSize(110,90);
+		exit.setLayout(null);
+		
+		
+		toolBar.add(exit);
+		
+		//load button
 		load = new JButton();
+		
+		
+		//load.setFocusable(false);
+		//load.setBackground(Color.BLACK);
+		load.setVisible(true);
+		load.setText("load");
+		load.setSize(110,90);
+		//load.setPreferredSize(new Dimension(110,90));
+		//load.setLabel();
+		load.setLayout(null);
+		
+		toolBar.add(load);
+		
+		
+		
 		save = new JButton();
 		
 		exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.print("OK");
 			}
-		});
+		});*/
 	}
 
 
