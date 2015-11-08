@@ -190,5 +190,23 @@ public class Hero {
 	
 	
 	//Move around the map. Yay.
-	
+	public static void move(String s) {
+		if(s.equals("up")&& getY()!=0) {
+			setY(getY()-1);
+			Display.move("up");
+		}
+		if(s.equals("down") && getY() != 74) {
+			setY(getY()+1);
+			Display.move("down");
+		}
+		if(s.equals("right") && getX() !=99) {
+			setX(getX()+1);
+			Display.move("right");
+		}
+		if(s.equals("left") && getX() != 0) {
+			setX(getX()-1);
+			Display.move("left");
+		}
+		
+	}
 }
