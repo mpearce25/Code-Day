@@ -2,16 +2,16 @@ import java.awt.event.KeyEvent;
 
 public class Town{
 	//Yay variables
-	int x;
-	int y;
-	int gunStore;
-	int gunPrice;
-	int hatPrice;
-	int hatStore;
-	String name;
-	int questAge;
-	String questString;
-	String loc;
+	static int x;
+	static int y;
+	static int gunStore;
+	static int gunPrice;
+	static int hatPrice;
+	static int hatStore;
+	static String name;
+	static int questAge;
+	static String questString;
+	static String loc;
 	//Constructor
 	public Town(String nm, int xcoord, int ycoord, int gun, int gp, int hat, int hp, int qa, String qs) {
 		x = xcoord;
@@ -26,7 +26,7 @@ public class Town{
 		loc = "center";
 	}
 	//When enters the town, location is center.
-	public void enter() {
+	public static void enter() {
 		if (questAge-1==Hero.getAge()) {
 			Display.output("You have completed your quest. Go to the Saloon to find out what to do next.");
 			Hero.setAge(Hero.getAge()+1);
@@ -36,7 +36,7 @@ public class Town{
 		loc = "center";
 	}
 	//When you enter the saloon.
-	public void saloon() {
+	public static void saloon() {
 		loc = "saloon";
 		if(Hero.getAge() == questAge) {
 			Display.output(questString);
@@ -46,7 +46,7 @@ public class Town{
 		Display.output("You can buy Whiskey(B) or exit(E).");
 	}
 	//When you enter the store.
-	public void store() {
+	public static void store() {
 		loc = "store";
 		if(Hero.getGunAttack() < gunStore) {
 			Display.output("You can get a new gun with an attack of "+gunStore+" for $"+gunPrice);
@@ -65,7 +65,7 @@ public class Town{
 		}
 	}
 	//When you try to buy a hat or gun.
-	public void buyStuff(Boolean gh) {
+	public static void buyStuff(Boolean gh) {
 		if(gh) {
 			if(gunPrice >= Hero.getMoney()) {
 				Hero.setMoney(Hero.getMoney()-gunPrice);
@@ -92,7 +92,7 @@ public class Town{
 		store();
 	}
 	//For buying whiskey.
-	public void buyWhiskey() {
+	public static void buyWhiskey() {
 		if(Hero.getMoney()>5) {
 			Display.output("You bought 1 whiskey.");
 			Hero.setMoney(Hero.getMoney()-5);
@@ -103,7 +103,7 @@ public class Town{
 		saloon();
 	}
 	//You pressed a key, so this is happening.
-	public void keyPressed(KeyEvent e) {
+	public static void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
 			case (KeyEvent.VK_H): {
 				if(loc.equals("store")) {

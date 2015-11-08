@@ -37,7 +37,9 @@ public class Hero {
 		Display.output("My father immediatly ran off into the crowd, ready to take on the bandits.");
 		Display.output("I stood there, unable to move, not knowing what to do.");
 		Display.output("Suddenly, a bandit ran up to me.");
-		setIntro(4);
+		setIntro(0);
+		Display.output("A bandit is attacking you. Hit to F to fight.");
+		fightBandit();
 	}
 	public static void intro4() {
 		Display.output("I stood stunned, while the bandit lay dead at my feet.");
@@ -71,7 +73,16 @@ public class Hero {
 		Display.output("The next town over might have some clues as to the Bandits whereabouts.");
 		Display.output("I had never been there, but I knew it was to the southeast.");
 	}
-	public void keyPressed(KeyEvent e) {
+	public static void fightBandit() {
+		Display.output("You attack the bandit and deal 10 damange.");
+		Display.output("You have defeated the bandit.");
+		Display.output("When in a fight, you may fight(F), run(R), or taunt(T)");
+		Display.output("Fight attacks the enemy, Run sometimes lets you escape,");
+		Display.output("and taunt may intimidate your opponent and get them to run.");
+		Display.output("Click Space( ) to continue.");
+		setIntro(4);
+	}
+	public static void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
 			case(KeyEvent.VK_SPACE): {
 				switch(intro) {
@@ -93,6 +104,11 @@ public class Hero {
 					case(7): {
 						intro7();
 					}
+				}
+			}
+			case(KeyEvent.VK_F): {
+				if(intro==0) {
+					fightBandit();
 				}
 			}
 		}
@@ -171,4 +187,8 @@ public class Hero {
 	public static void setIntro(int a) {
 		intro = a;
 	}
+	
+	
+	//Move around the map. Yay.
+	
 }
