@@ -61,7 +61,7 @@ public class Display {
 		
 		scrollPane.setSize(700, 165);
 		scrollPane.setLocation(10, 10);
-		
+		console.setEditable(false);
 		
 		//toolBar
 		toolBar = new JToolBar();
@@ -105,12 +105,25 @@ public class Display {
 				System.out.print("OK");
 			}
 		});
+		
+		save.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.print("OK");
+			}
+		});
+		
+		load.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.print("OK");
+			}
+		});
+		
 	}
 
 
 	public static void output(String s) {
 		
-		
+		console.setText(console.getText() + s);
 		
 	}
 	
@@ -143,11 +156,5 @@ public class Display {
 		
 		
 	}
-	
-	public abstract class listener implements ActionListener { 
-		
-		
-		
-	}
-	
+
 }
