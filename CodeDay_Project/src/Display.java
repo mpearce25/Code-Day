@@ -99,6 +99,12 @@ public class Display {
 		
 		load = new JButton();
 		save = new JButton();
+		
+		exit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.print("OK");
+			}
+		});
 	}
 
 
