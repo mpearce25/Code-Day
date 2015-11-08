@@ -4,17 +4,17 @@ import java.awt.event.KeyListener;
 
 
 public class Hideout implements KeyListener {
-	public double x;
-	public double y;
-	public int number_bandits;
-	public boolean taunting;
-	public boolean fighting;
-	public boolean running;
-	Hero h;
-	Display d;
-	String reason;
-	Image image;
-	public Enemy[] enemies = new Enemy[number_bandits];
+	public static double x;
+	public static double y;
+	public static int number_bandits;
+	public static boolean taunting;
+	public static boolean fighting;
+	public static boolean running;
+	static Hero h;
+	static Display d;
+	static String reason;
+	static Image image;
+	static public Enemy[] enemies = new Enemy[number_bandits];
 	//enemies =  new Enemy[10];
 	public Hideout(double x, double y, int number_bandits, Hero h, Display d, Image image){
 		this.x = x;
