@@ -10,13 +10,11 @@ public class Hideout implements KeyListener {
 	public boolean taunting;
 	public boolean fighting;
 	public boolean running;
-	Hero h;
-	Display d;
 	String reason;
 	Image image;
 	public Enemy[] enemies = new Enemy[number_bandits];
 	//enemies =  new Enemy[10];
-	public Hideout(double x, double y, int number_bandits, Hero h, Display d, Image image){
+	public Hideout(double x, double y, int number_bandits, Image image){
 		this.x = x;
 		this.y = y;
 		this.number_bandits = number_bandits;
@@ -27,7 +25,7 @@ public class Hideout implements KeyListener {
 	//make the player know to move on to the next thing after the bandits are killed
 	//make the final boss
 	@Override
-	public void keyPressed(KeyEvent e) {
+	public static void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		switch(e.getKeyCode()){
 		//f - Fight
@@ -62,42 +60,42 @@ public class Hideout implements KeyListener {
 	for(int i = 0; i<enemies.length;i++){
 		enemies[i] = new Enemy(i*5 + 20,i*5,i*5 + 20,"Bandit");
 		System.out.println("Hi");
-		while(enemies[i].health > 0 && h.getCurrentHealth() > 0){
-		if(fighting == true){
-			if(enemies[i].attack * Math.random()>h.getAttack()*Math.random()){
-				h.setCurrentHealth((int) (h.getCurrentHealth()-enemies[i].attack));
-			}else if(enemies[i].attack * Math.random()<h.getAttack()*Math.random()){
-				enemies[i].health -= h.getAttack();
-			}else if(enemies[i].attack * Math.random() == h.getAttack()*Math.random()){
-				enemies[i].style += 10;
-				h.setStyle(10);
+		while(enemies[i].health > 0 && Hero.getCurrentHealth() > 0){
+			if(fighting == true){
+				if(enemies[i].attack * Math.random()>Hero.getAttack()*Math.random()){
+					Hero.setCurrentHealth((int) (Hero.getCurrentHealth()-enemies[i].attack));
+				}else if(enemies[i].attack * Math.random()<Hero.getAttack()*Math.random()){
+					enemies[i].health -= Hero.getAttack();
+				}else if(enemies[i].attack * Math.random() == Hero.getAttack()*Math.random()){
+					enemies[i].style += 10;
+					Hero.setStyle(10);
+				}
+			}else if(taunting == true){
+				if(enemies[i].style * Math.random() < Hero.getStyle()*Math.random()){
+					enemies[i].health = 0;
+					reason = "The Bandit Couldn't Handle Your Style!";
+				}else{
+					enemies[i].health+=5;
+				}
+			}else if(running == true){
+				if(Math.random() > .80){
+					enemies[i].health = 0;
+					reason = "You Succesfully Escaped the Bandit!";
+				}else{
+					enemies[i].health+=5;
+				}
 			}
-		}else if(taunting == true){
-			if(enemies[i].style * Math.random() < h.getStyle()*Math.random()){
-				enemies[i].health = 0;
-				reason = "The Bandit Couldn't Handle Your Style!";
-			}else{
-				enemies[i].health+=5;
-			}
-		}else if(running == true){
-			if(Math.random() > .80){
-				enemies[i].health = 0;
-				reason = "You Succesfully Escaped the Bandit!";
-			}else{
-				enemies[i].health+=5;
-			}
-		}
 		}
 		if(enemies[i].health <= 0){
-		reason = "You Killed The Bandit!";
-		}else if(h.getCurrentHealth() <= 0){
+			reason = "You Killed The Bandit!";
+		}else if(Hero.getCurrentHealth() <= 0){
 			reason = "You were killed by the Bandit";
 		}
-		d.output(reason);
+		Display.output(reason);
 	}
-	if(h.getCurrentHealth()> 0){
-		h.setAge(h.getAge()+1);
-		d.output("Congratulations, You beat the bandits!  Move on to the next Quest!");
+	if(Hero.getCurrentHealth()> 0){
+		Hero.setAge(Hero.getAge()+1);
+		Display.output("Congratulations, You beat the bandits!  Move on to the next Quest!");
 	}
 }
 }
