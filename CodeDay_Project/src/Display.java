@@ -15,6 +15,8 @@ public class Display {
 	private static JTextArea console;
 	private static JToolBar toolBar;
 	
+	//button pannels
+	//private static JPanel buttonsPanel
 	//button
 	private static JButton exit;
 	private static JButton save;
@@ -61,56 +63,68 @@ public class Display {
 		
 		scrollPane.setSize(700, 165);
 		scrollPane.setLocation(10, 10);
+		console.setEditable(false);
 		
-		
-		//toolBar
-		toolBar = new JToolBar();
-		frame.add(toolBar);
-		
-		toolBar.setLocation(720,620);
-		toolBar.setSize(350, 90);
-		toolBar.setFloatable(false);
-		toolBar.setFocusable(false);
-		toolBar.setBorder(BorderFactory.createLineBorder(Color.black));
-		
-		//exit button
-		
-		exit = new JButton();
-		toolBar.add(exit);
-		
-		
-		//Border line = new LineBorder(new Color(160, 160, 160));
-		//Border margin = new EmptyBorder(5, 15, 5, 15);
-		//Border compound = new CompoundBorder(line, margin);
 
-		exit.setPreferredSize(new Dimension(116,90));
-		exit.setFocusable(false);
-		exit.setBackground(Color.WHITE);
-		//exit.setBorder(compound);
+		//exit button
+		exit = new JButton();
+		frame.add(exit);
+		
 		exit.setVisible(true);
+		exit.setLocation(720, 620);
 		exit.setText("exit");
-		exit.setSize(316,390);
-		//exit.setPreferredSize(new Dimension(200,300));
-	
+		exit.setFocusable(true);
+		exit.setSize(110,90);
 		
-		
-		toolBar.setVisible(true);
-		
-		
-		load = new JButton();
+		//save button
 		save = new JButton();
+		frame.add(save);
+		
+		save.setVisible(true);
+		save.setLocation(840, 620);
+		save.setText("save");
+		save.setFocusable(true);
+		save.setSize(110,90);
+		
+		//load button
+		load = new JButton();
+		frame.add(load);
+		
+		load.setVisible(true);
+		load.setLocation(960, 620);
+		load.setText("load");
+		load.setFocusable(true);
+		load.setSize(110,90);
+		
+		
+		
+	
 		
 		exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.print("OK");
 			}
+
 		});
+		
+		save.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.print("OK");
+			}
+		});
+		
+		load.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.print("OK");
+			}
+		});
+		
 	}
 
 
 	public static void output(String s) {
 		
-		
+		console.setText(console.getText() + s);
 		
 	}
 	
@@ -143,11 +157,5 @@ public class Display {
 		
 		
 	}
-	
-	public abstract class listener implements ActionListener { 
-		
-		
-		
-	}
-	
+
 }
