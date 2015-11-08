@@ -57,7 +57,7 @@ public class Hideout implements KeyListener {
 		while(enemies[i].health > 0 && h.getCurrentHealth() > 0){
 		if(fighting == true){
 			if(enemies[i].attack * Math.random()>h.getAttack()*Math.random()){
-				h.setCurrentHealth(h.getCurrentHealth()-enemies[i].attack);
+				h.setCurrentHealth((int) (h.getCurrentHealth()-enemies[i].attack));
 			}else if(enemies[i].attack * Math.random()<h.getAttack()*Math.random()){
 				enemies[i].health -= h.getAttack();
 			}else if(enemies[i].attack * Math.random() == h.getAttack()*Math.random()){
@@ -65,7 +65,7 @@ public class Hideout implements KeyListener {
 				h.setStyle(10);
 			}
 		}else if(taunting == true){
-			if(enemies[i].style * Math.random() < h.style*Math.random()){
+			if(enemies[i].style * Math.random() < h.getStyle()*Math.random()){
 				enemies[i].health = 0;
 				reason = "The Bandit Couldn't Handle Your Style!";
 			}else{
@@ -82,7 +82,7 @@ public class Hideout implements KeyListener {
 		}
 		if(enemies[i].health <= 0){
 		reason = "You Killed The Bandit!";
-		}else if(h.getHealth() <= 0){
+		}else if(h.getCurrentHealth() <= 0){
 			reason = "You were killed by the Bandit";
 		}
 		Display.output(reason);
