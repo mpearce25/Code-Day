@@ -63,7 +63,16 @@ public class Display {
 		
 		scrollPane.setSize(700, 165);
 		scrollPane.setLocation(10, 10);
+<<<<<<< HEAD
 		console.setEditable(true);
+=======
+		console.setEditable(false);
+		console.setLineWrap(true);
+		console.setColumns(1);
+		console.setFocusable(true);
+		console.setLayout(null);
+		//console.setRows( );
+>>>>>>> origin/master
 		
 
 		//exit button
@@ -119,14 +128,19 @@ public class Display {
 			}
 		});
 		
+<<<<<<< HEAD
 		output("hey");
+=======
+		output("sup");
+>>>>>>> origin/master
 		
 	}
 
 
 	public static void output(String s) {
 		
-		console.setText(console.getText() + s);
+		console.append(s);
+		console.updateUI();
 		
 	}
 	
