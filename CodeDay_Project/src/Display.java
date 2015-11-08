@@ -1,3 +1,4 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
@@ -5,6 +6,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class Display {
 	
@@ -14,7 +18,7 @@ public class Display {
 	
 	private static JFrame frame;
 	private static JPanel stats;
-	private static JPanel map;
+	private static JLabel map;
 	private static JScrollPane scrollPane;
 	private static JTextArea console;
 	
@@ -24,6 +28,8 @@ public class Display {
 	private static JButton exit;
 	private static JButton save;
 	private static JButton load;
+	
+	private static BufferedImage bufferedImage;
 	
 	public static void main(String[] args) {
 		
@@ -36,15 +42,45 @@ public class Display {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		
-		///map
-		map = new JPanel();
-		map.setLayout(null);
-		frame.add(map);
 		
-		map.setLocation(10, 185);
-		map.setSize(700, 525);
-		map.setBorder(BorderFactory.createLineBorder(Color.black));
-
+		// Live Here
+		drawImage("Home.png", 31,207,21,21);
+		
+		// Ranch
+		drawImage("Town.png", 143,325,21,21);
+		
+		// town 2
+		drawImage("Town.png", 136,626,21,21);
+		
+		// town 3
+		drawImage("Town.png", 360,395,21,21);
+		
+		// town 4
+		drawImage("Town.png", 619,360,21,21);
+		
+		// town 5
+		drawImage("Town.png", 556,577,21,21);
+		
+		// Hideout 1
+		drawImage("Rock.png", 269,332,21,21);
+		
+		// Hideout 2
+		drawImage("Rock.png", 262,479,21,21);
+		
+		// Hideout 3
+		drawImage("Rock.png", 514,367,21,21);
+		
+		// Hideout 4
+		drawImage("Rock.png", 584,500,21,21);
+		
+		// MEGA BOSS
+		drawImage("Rock.png", 651,655,21,21);
+		
+		/// drawing images
+		drawImage("Map_Background.png", 10,185,700,525);
+		
+		//
+		
 		//stats
 		stats = new JPanel();
 		frame.add(stats);
@@ -53,7 +89,6 @@ public class Display {
 		stats.setLocation(720, 10);
 		stats.setSize(350,600);
 		stats.setBorder(BorderFactory.createLineBorder(Color.black));
-		
 		
 		//console
 		scrollPane = new JScrollPane();
@@ -65,6 +100,14 @@ public class Display {
 		
 		scrollPane.setSize(700, 165);
 		scrollPane.setLocation(10, 10);
+		Rectangle rect = new Rectangle(10,165);
+		scrollPane.scrollRectToVisible(rect);
+		scrollPane.addMouseWheelListener(new MouseAdapter() {
+			public void MouseWheelMoved(MouseWheelEvent e) {
+				System.out.print(e.getScrollType());
+			}
+
+		});
 		
 		console.setSize(700, 165);
 
@@ -124,9 +167,26 @@ public class Display {
 			}
 		});
 		
-		output("Hey man");
+		output("Hey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey manHey man");
 	}
 
+	
+	public static void drawImage(String imagePath, int location_x, int location_y, int size_x, int size_y ){
+		try {
+			bufferedImage = ImageIO.read(new File(imagePath));
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
+		JLabel image = new JLabel(new ImageIcon(bufferedImage));
+		//image.setLayout(null);
+		frame.add(image);
+		
+		image.setLocation(location_x, location_y);
+		image.setSize(size_x, size_y);
+		//image.setBorder(BorderFactory.createLineBorder(Color.black));
+
+	}
 
 	public static void output(String s) {
 		
@@ -136,7 +196,7 @@ public class Display {
 	}
 	
 	public static void move(String move) {    // player move
-		 
+		
 		
 		
 	}
