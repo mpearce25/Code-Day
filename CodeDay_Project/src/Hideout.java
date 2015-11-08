@@ -1,24 +1,25 @@
-import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 
 public class Hideout{
-	public static double x;
-	public static double y;
+	public static int x;
+	public static int y;
 	public static int number_bandits;
 	public static boolean taunting;
 	public static boolean fighting;
 	public static boolean running;
 	static String reason;
-	static Image image;
+	public static int questAge;
+	public static String questText;
 	public static Enemy[] enemies = new Enemy[number_bandits];
 	//enemies =  new Enemy[10];
-	public Hideout(double xcoord, double ycoord, int nb, Image img){
+	public Hideout(int xcoord, int ycoord, int nb, int qa,String qt){
 		x = xcoord;
 		y = ycoord;
 		number_bandits = nb;
-		image = img;
+		questAge = qa;
+		questText = qt;
 	}
 	
 	//miss when you shoot sometimes
@@ -53,6 +54,11 @@ public class Hideout{
 		
 	}
 	public static void battle(){
+		if(questAge != Hero.getAge()) {
+			Display.output("\"Get out of here!\", a voice cried out.");
+			Hero.setX((int)x-1);
+			Hero.setY((int)y-1);
+		} else {
 		if(enemies.length == 1){
 			//Mega Boss mode
 			enemies[0] = new Enemy(65,10,2000,"");
@@ -62,14 +68,12 @@ public class Hideout{
 		System.out.println("Hi");
 		while(enemies[i].health > 0 && Hero.getCurrentHealth() > 0){
 			if(fighting == true){
-				if(enemies[i].attack * Math.random()>Hero.getAttack()*Math.random()){
-					Hero.setCurrentHealth((int) (Hero.getCurrentHealth()-enemies[i].attack));
-				}else if(enemies[i].attack * Math.random()<Hero.getAttack()*Math.random()){
-					enemies[i].health -= Hero.getAttack();
-				}else if(enemies[i].attack * Math.random() == Hero.getAttack()*Math.random()){
-					enemies[i].style += 10;
-					Hero.setStyle(10);
-				}
+				int heroRand = (int)(Math.floor(Math.random()*3.0))-1;
+				int enemyRand = (int)(Math.floor(Math.random()*3.0))-1;
+				enemies[i].health -= (Hero.getAttack()+heroRand);
+				Display.output("You attacked your enemy and dealt "+(Hero.getAttack()+heroRand)+" damage.");
+					Hero.setCurrentHealth((int) (Hero.getCurrentHealth()-enemies[i].attack+enemyRand));
+					Display.output("Your enemy has attacked you and dealt " +(enemies[i].attack+enemyRand)+" damage."); 
 			}else if(taunting == true){
 				if(enemies[i].style * Math.random() < Hero.getStyle()*Math.random()){
 					enemies[i].health = 0;
@@ -78,25 +82,27 @@ public class Hideout{
 					enemies[i].health+=5;
 				}
 			}else if(running == true){
-				if(Math.random() > .80){
+				if(Math.random() > .80 ){
 					enemies[i].health = 0;
 					reason = "You Succesfully Escaped the Bandit!";
 				}else{
 					enemies[i].health+=5;
+					Display.output("You couldn't get away and your enemy healed 5 health!");
 				}
 			}
 		}
 		if(enemies[i].health <= 0){
 			reason = "You Killed The Bandit!";
 		}else if(Hero.getCurrentHealth() <= 0){
-			reason = "You were killed by the Bandit";
+			reason = "You were killed by the Bandit.";
 		}
 		Display.output(reason);
 	}
 	if(Hero.getCurrentHealth()> 0){
 		Hero.setAge(Hero.getAge()+1);
-		Display.output("Congratulations, You beat the bandits!  Move on to the next Quest!");
+		Display.output(questText);
 	}
 }
+	}
 }
 
