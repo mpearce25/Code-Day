@@ -149,7 +149,13 @@ public class Display implements Runnable {
 >>>>>>> origin/master
 	}
 
+	public void initMap(){
 
+		
+
+
+	}
+	
 	public static void output(String s) {
 		
 		console.setText(console.getText() + s);
