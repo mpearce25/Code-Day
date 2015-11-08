@@ -1,5 +1,3 @@
-import java.util.*;
-import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class Town{
