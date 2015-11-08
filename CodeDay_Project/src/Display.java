@@ -6,7 +6,7 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Display implements Runnable {
+public class Display {
 	
 	private static JFrame frame;
 	private static JPanel stats;
@@ -20,8 +20,6 @@ public class Display implements Runnable {
 	private static JButton exit;
 	private static JButton save;
 	private static JButton load;
-	
-	static Thread thread = new Thread();
 	
 	public static void main(String[] args) {
 		
@@ -73,8 +71,6 @@ public class Display implements Runnable {
 		console.setLayout(null);
 		//console.setRows( );
 
-		
-
 		//exit button
 		exit = new JButton();
 		frame.add(exit);
@@ -125,7 +121,6 @@ public class Display implements Runnable {
 		});
 		
 		output("Hey man");
-		thread.start();
 	}
 
 
@@ -164,26 +159,6 @@ public class Display implements Runnable {
 		
 		
 		
-	}
-	
-	public void go() {
-		
-		output("");
-		
-	}
-
-	public void run(){
-		while(true){
-			//System.out.println("hi");
-			go();
-			//repaint();
-			try {
-				thread.sleep(5);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 	}
 
 }
