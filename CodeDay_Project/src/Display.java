@@ -3,11 +3,11 @@ import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-
 import java.awt.*;
 import java.awt.event.*;
+import java.util.
 
-public class Display {
+public class Display extends ActiveListener {
 	
 	private static JFrame frame;
 	private static JPanel stats;
@@ -76,6 +76,8 @@ public class Display {
 		
 		//exit button
 		exit = new JButton();
+		load = new JButton();
+		save = new JButton();
 		
 		Border line = new LineBorder(new Color(160, 160, 160));
 		Border margin = new EmptyBorder(5, 15, 5, 15);
@@ -92,7 +94,7 @@ public class Display {
 
 	public static void output(String s) {
 		
-		// sup
+		
 		
 	}
 	
@@ -114,13 +116,13 @@ public class Display {
 		
 	}
 	
-	public static void newGun(String s) {
+	public static void newGun() {
 		
 		
 		
 	}
 	
-	public static void newHat(String s) {
+	public static void newHat() {
 		
 		
 		
